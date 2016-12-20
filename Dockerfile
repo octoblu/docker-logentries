@@ -1,14 +1,17 @@
-# docker-logentries
-#
-# VERSION 0.2.0
+FROM node:6-slim
+MAINTAINER Octoblu <docker@octoblu.com>
 
-FROM node:0.12-onbuild
-MAINTAINER Rapid 7 - Logentries <support@logentries.com>
+ENV NPM_CONFIG_LOGLEVEL error
 
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json package.json
-RUN npm install --production
-COPY index.js /usr/src/app/index.js
 
-ENTRYPOINT ["/usr/src/app/index.js"]
-CMD []
+RUN npm install --silent --global yarn
+
+COPY package.json yarn.lock /usr/src/app/
+
+RUN yarn install
+
+COPY . /usr/src/app
+
+CMD [ "node", "--max_old_space_size=256", "command.js" ]
