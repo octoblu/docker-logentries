@@ -15,9 +15,9 @@ const envalid = require('envalid')
 function connect (opts) {
   let stream
   if (opts.secure) {
-    stream = tls.connect(opts.port, opts.server, onSecure)
+    stream = tls.connect(opts.port, opts.hostname, onSecure)
   } else {
-    stream = net.createConnection(opts.port, opts.server)
+    stream = net.createConnection(opts.port, opts.hostname)
   }
   function onSecure () {
     // let's just crash if we are not secure
@@ -147,9 +147,9 @@ function cli () {
     logsToken: env.LOGENTRIES_LOGSTOKEN,
     statsToken: env.LOGENTRIES_STATSTOKEN,
     eventsToken: env.LOGENTRIES_EVENTSTOKEN,
+    secure: env.LOGENTRIES_SECURE,
     port: env.LOGENTRIES_PORT,
     hostname: env.LOGENTRIES_HOSTNAME,
-    secure: env.LOGENTRIES_SECURE,
     stackName: env.STACK_NAME
   }
   start(opts)

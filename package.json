@@ -1,6 +1,6 @@
 {
   "name": "docker-logentries",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Forward all logs from all running docker containers to Logentries",
   "repository": {
     "type": "git",
@@ -8,7 +8,10 @@
   },
   "main": "command.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "coverage": "nyc npm test",
+    "mocha:json": "env NPM_ENV=test mocha --reporter json > coverage/mocha.json",
+    "test:watch": "mocha -w -R mocha-multi --reporter-options spec=-,mocha-osx-reporter=-"
   },
   "author": "Matteo Collina <matteo.collina@nearform.com>",
   "license": "MIT",
@@ -25,6 +28,21 @@
     "through2": "^2.0.3"
   },
   "devDependencies": {
-    "standard": "^8.6.0"
+    "standard": "^8.6.0",
+    "nyc": "^8.3.0",
+    "mocha-osx-reporter": "^0.1.2",
+    "mocha-multi": "^0.9.1",
+    "mocha": "^2.5.3"
+  },
+  "nyc": {
+    "cache": true,
+    "reporter": [
+      "text-summary",
+      "lcov",
+      "json"
+    ],
+    "extension": [
+      ".coffee"
+    ]
   }
 }
