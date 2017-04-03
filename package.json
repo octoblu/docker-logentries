@@ -1,6 +1,6 @@
 {
   "name": "docker-logentries",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Forward all logs from all running docker containers to Logentries",
   "repository": {
     "type": "git",
@@ -19,20 +19,20 @@
     "docker-allcontainers": "^0.6.1",
     "docker-event-log": "^0.1.2",
     "docker-loghose": "^1.1.0",
-    "docker-stats": "^0.7.0",
-    "dockerode": "^2.2.2",
-    "end-of-stream": "^1.1.0",
-    "envalid": "^2.4.1",
-    "lodash": "^4.17.2",
+    "docker-stats": "^0.7.1",
+    "dockerode": "^2.4.3",
+    "end-of-stream": "^1.4.0",
+    "envalid": "^2.4.2",
+    "lodash": "^4.17.4",
     "minimist": "^1.1.1",
+    "request": "^2.81.0",
     "through2": "^2.0.3"
   },
   "devDependencies": {
-    "standard": "^8.6.0",
-    "nyc": "^8.3.0",
+    "mocha": "^3.2.0",
+    "mocha-multi": "^0.10.0",
     "mocha-osx-reporter": "^0.1.2",
-    "mocha-multi": "^0.9.1",
-    "mocha": "^2.5.3"
+    "nyc": "^10.2.0"
   },
   "nyc": {
     "cache": true,
